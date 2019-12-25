@@ -24,6 +24,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         channel.assertQueue('', {
             exclusive: true
         }, function(error2, q) {
+            console.log(1,q);
             if (error2) {
                 throw error2;
             }
