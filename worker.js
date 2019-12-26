@@ -8,10 +8,10 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         if (error1) {
             throw error1;
         }
-        var queue = '111';
+        var queue = '';
 
         channel.assertQueue(queue, {
-            durable: true
+            durable: false
         });
         channel.prefetch(1);
         console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
@@ -21,7 +21,6 @@ amqp.connect('amqp://localhost', function(error0, connection) {
             console.log(" [x] Received %s", msg.content.toString());
             setTimeout(function() {
                 console.log(" [x] Done");
-                channel.ack(msg);
             }, secs * 1000);
         }, {
             // manual acknowledgment mode,

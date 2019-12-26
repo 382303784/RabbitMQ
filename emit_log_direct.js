@@ -16,6 +16,9 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         channel.assertExchange(exchange, 'direct', {
             durable: false
         });
+
+        console.log(exchange,severity);
+
         channel.publish(exchange, severity, Buffer.from(msg));
         console.log(" [x] Sent %s: '%s'", severity, msg);
     });

@@ -8,11 +8,11 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         if (error1) {
             throw error1;
         }
-        var exchange = 'logs';
+        var exchange = 'logs1';
         var msg = process.argv.slice(2).join(' ') || 'Hello World!';
 
         channel.assertExchange(exchange, 'fanout', {
-            durable: false
+            durable: true
         });
         channel.publish(exchange, '', Buffer.from(msg));
         console.log(" [x] Sent %s", msg);

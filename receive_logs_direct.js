@@ -35,6 +35,9 @@ amqp.connect('amqp://localhost', function(error0, connection) {
             });
 
             channel.consume(q.queue, function(msg) {
+                console.log(2,msg);
+                console.log(2,msg.fields.routingKey);
+                console.log(2,msg.content.toString());
                 console.log(" [x] %s: '%s'", msg.fields.routingKey, msg.content.toString());
             }, {
                 noAck: true
