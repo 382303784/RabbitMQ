@@ -8,13 +8,13 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         if (error1) {
             throw error1;
         }
-        var exchange = 'logs1';
+        var exchange = 'logs11';
         var msg = process.argv.slice(2).join(' ') || 'Hello World!';
 
-        channel.assertExchange(exchange, 'fanout', {
+        channel.assertExchange(exchange, 'direct', {
             durable: true
-        });
-        channel.publish(exchange, '', Buffer.from(msg));
+        })
+        channel.publish(exchange, '111', Buffer.from(msg));
         console.log(" [x] Sent %s", msg);
     });
 

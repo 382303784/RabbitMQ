@@ -8,7 +8,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         if (error1) {
             throw error1;
         }
-        var queue = '';
+        var queue = '1111';
 
         channel.assertQueue(queue, {
             durable: false
@@ -25,7 +25,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         }, {
             // manual acknowledgment mode,
             // see https://www.rabbitmq.com/confirms.html for details
-            noAck: false
+            noAck: true
         });
     });
 });

@@ -8,9 +8,9 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         if (error1) {
             throw error1;
         }
-        var exchange = 'logs1';
+        var exchange = 'logs11';
 
-        channel.assertExchange(exchange, 'fanout', {
+        channel.assertExchange(exchange, 'direct', {
             durable: true
         });
 
@@ -21,7 +21,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
                 throw error2;
             }
             console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q.queue);
-            channel.bindQueue(q.queue, exchange, '');
+            channel.bindQueue(q.queue, exchange, '111');
 
             channel.consume(q.queue, function(msg) {
                 if(msg.content) {
